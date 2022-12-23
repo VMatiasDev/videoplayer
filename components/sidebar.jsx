@@ -6,6 +6,9 @@ const SidebarContainer = styled.aside`
   width: 100%;
   background-color: #eee;
   padding: 20px;
+  @media screen and (min-width: 1200px) {
+    width: 20%;
+  }
 `;
 
 const VideoList = styled.ul`
