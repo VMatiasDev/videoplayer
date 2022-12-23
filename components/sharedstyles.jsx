@@ -8,3 +8,8 @@ export const Main = styled.main`
     color: white;
   }
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
