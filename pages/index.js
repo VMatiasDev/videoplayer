@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { Main } from '../components/sharedstyles';
+import VideoPlayer from '../components/videoplayer';
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Main>
-        <h1>Página Principal</h1>
+        <h1>Video Player</h1>
+        <VideoPlayer />
       </Main>
     </>
   );
