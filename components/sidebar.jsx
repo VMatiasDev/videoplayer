@@ -19,6 +19,10 @@ const VideoList = styled.ul`
 
 const VideoListItem = styled.li`
   margin-bottom: 10px;
+  cursor: pointer;
+  &:hover {
+    scale: 1.1;
+  }
 `;
 
 const VideoThumbnail = styled.img`
@@ -27,15 +31,23 @@ const VideoThumbnail = styled.img`
 
 const VideoTitle = styled.h3`
   font-size: 16px;
-  margin-top: 10px;
 `;
 
-function VideoSidebar({}) {
+function VideoSidebar({ setVideo }) {
   return (
     <SidebarContainer>
       <VideoList>
         {Data.map((data) => (
-          <VideoListItem key={data.id}>
+          <VideoListItem
+            key={data.id}
+            onClick={() =>
+              setVideo({
+                videoName: data.videoName,
+                videoSrc: data.videoSrc,
+                description: data.description,
+              })
+            }
+          >
             <VideoThumbnail src={data.imgSrc} alt={data.videoName} />
             <VideoTitle>{data.videoName}</VideoTitle>
           </VideoListItem>

@@ -1,9 +1,17 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import { Main, Wrapper } from '../components/sharedstyles';
 import VideoSidebar from '../components/sidebar';
 import VideoPlayer from '../components/videoplayer';
+import Data from '../components/data';
 
 export default function Home() {
+  const [isVideo, setVideo] = useState({
+    videoName: Data[0].videoName,
+    videoSrc: Data[0].videoSrc,
+    description: Data[0].description,
+  });
+
   return (
     <>
       <Head>
@@ -15,9 +23,9 @@ export default function Home() {
       <Wrapper>
         <Main>
           <h1>Video Player</h1>
-          <VideoPlayer />
+          <VideoPlayer data={isVideo} />
         </Main>
-        <VideoSidebar />
+        <VideoSidebar setVideo={setVideo} />
       </Wrapper>
     </>
   );
