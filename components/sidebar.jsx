@@ -4,7 +4,7 @@ import Data from './data';
 
 const SidebarContainer = styled.aside`
   width: 20%;
-  background-color: #eee;
+  background-color: rgba(128, 128, 128, 0.2);
   padding: 20px;
   @media screen and (max-width: 768px) {
     width: 30%;
@@ -15,6 +15,8 @@ const VideoList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 `;
 
 const VideoListItem = styled.li`
@@ -30,13 +32,14 @@ const VideoThumbnail = styled.img`
 `;
 
 const VideoTitle = styled.h3`
-  font-size: 16px;
+  font-size: 1rem;
+  color: #fff;
 `;
 
 function VideoSidebar({ setVideo }) {
   return (
     <SidebarContainer>
-      <VideoList>
+      <VideoList className='videolist'>
         {Data.map((data) => (
           <VideoListItem
             key={data.id}
