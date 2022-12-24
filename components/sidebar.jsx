@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import Data from './data';
 
 const SidebarContainer = styled.aside`
-  width: 100%;
+  width: 20%;
   background-color: #eee;
   padding: 20px;
-  @media screen and (min-width: 1200px) {
-    width: 20%;
+  @media screen and (max-width: 768px) {
+    width: 30%;
   }
 `;
 
