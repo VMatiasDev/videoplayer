@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Data from './data';
 
@@ -8,6 +8,15 @@ const SidebarContainer = styled.aside`
   padding: 20px;
   @media screen and (max-width: 768px) {
     width: 30%;
+  }
+  button {
+    cursor: pointer;
+    width: 70px;
+    padding: 10px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
   }
 `;
 
@@ -37,10 +46,50 @@ const VideoTitle = styled.h3`
 `;
 
 function VideoSidebar({ setVideo }) {
+  const [filters, setFilters] = useState({ tag: 'Todas' });
+
+  const handleFilterChange = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    setFilters({
+      ...filters,
+      [name]: value,
+    });
+  };
+
+  const applyFilters = (videos, filters) => {
+    if (filters.tag !== 'Todas') {
+      videos = videos.filter((video) => video.tag === filters.tag);
+    }
+    return videos;
+  };
+
+  const filteredVideos = applyFilters(Data, filters);
+
   return (
     <SidebarContainer>
+      <button name='tag' value='Todas' onClick={handleFilterChange}>
+        Todas
+      </button>
+      <button name='tag' value='lobo' onClick={handleFilterChange}>
+        Lobo
+      </button>
+      <button name='tag' value='leao' onClick={handleFilterChange}>
+        Leão
+      </button>
+      <button name='tag' value='cachorro' onClick={handleFilterChange}>
+        Cão
+      </button>
+      <button name='tag' value='gato' onClick={handleFilterChange}>
+        Gato
+      </button>
+      <button name='tag' value='macaco' onClick={handleFilterChange}>
+        Macaco
+      </button>
       <VideoList className='videolist'>
-        {Data.map((data) => (
+        {filteredVideos.map((data) => (
           <VideoListItem
             key={data.id}
             onClick={() =>
